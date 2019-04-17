@@ -98,7 +98,10 @@ const comingSoonConfirmation = () => {
         SubscriberAttributes: {
           EmailAddress: SEND_EMAIL,
           XML_DATA:
-            "<PRODITEMS> <ITEM> <PRODUCTIMAGE >http://www.forever21.com/images/intl_g/00331533-04.jpg</PRODUCTIMAGE > <PRODUCTNAME>Swim Cover-Up Maxi Dress</PRODUCTNAME> <PRODUCTPRICE>$34.9000</PRODUCTPRICE> <PRODUCTID>2000331533</PRODUCTID> <PRODUCTURL >https://www.forever21.com/us/shop/Catalog/Product/f21/dress/2000331533?</PRODUCTURL > </ITEM> <ITEM> <PRODUCTIMAGE >http://www.forever21.com/images/intl_g/00331533-04.jpg</PRODUCTIMAGE > <PRODUCTNAME>Swim Cover-Up Maxi Dress</PRODUCTNAME> <PRODUCTPRICE>$34.9000</PRODUCTPRICE> <PRODUCTID>2000331533</PRODUCTID> <PRODUCTURL >https://www.forever21.com/us/shop/Catalog/Product/f21/dress/2000331533?</PRODUCTURL > </ITEM> <ITEM> <PRODUCTIMAGE >http://www.forever21.com/images/intl_g/00331533-04.jpg</PRODUCTIMAGE > <PRODUCTNAME>Swim Cover-Up Maxi Dress</PRODUCTNAME> <PRODUCTPRICE>$34.9000</PRODUCTPRICE> <PRODUCTID>2000331533</PRODUCTID> <PRODUCTURL >https://www.forever21.com/us/shop/Catalog/Product/f21/dress/2000331533?</PRODUCTURL > </ITEM> </PRODITEMS>"
+            // MULTIPLE ITEMS
+            // "<PRODITEMS> <ITEM> <PRODUCTIMAGE >http://www.forever21.com/images/intl_g/00331533-04.jpg</PRODUCTIMAGE > <PRODUCTNAME>Swim Cover-Up Maxi Dress</PRODUCTNAME> <PRODUCTPRICE>$34.9000</PRODUCTPRICE> <PRODUCTID>2000331533</PRODUCTID> <PRODUCTURL >https://www.forever21.com/us/shop/Catalog/Product/f21/dress/2000331533?</PRODUCTURL > </ITEM> <ITEM> <PRODUCTIMAGE >http://www.forever21.com/images/intl_g/00331533-04.jpg</PRODUCTIMAGE > <PRODUCTNAME>Swim Cover-Up Maxi Dress</PRODUCTNAME> <PRODUCTPRICE>$34.9000</PRODUCTPRICE> <PRODUCTID>2000331533</PRODUCTID> <PRODUCTURL >https://www.forever21.com/us/shop/Catalog/Product/f21/dress/2000331533?</PRODUCTURL > </ITEM> <ITEM> <PRODUCTIMAGE >http://www.forever21.com/images/intl_g/00331533-04.jpg</PRODUCTIMAGE > <PRODUCTNAME>Swim Cover-Up Maxi Dress</PRODUCTNAME> <PRODUCTPRICE>$34.9000</PRODUCTPRICE> <PRODUCTID>2000331533</PRODUCTID> <PRODUCTURL >https://www.forever21.com/us/shop/Catalog/Product/f21/dress/2000331533?</PRODUCTURL > </ITEM> </PRODITEMS>"
+
+            "<PRODITEMS> <ITEM> <PRODUCTIMAGE>http://www.forever21.com/images/intl_g/00331533-04.jpg</PRODUCTIMAGE> <PRODUCTNAME>Swim Cover-Up Maxi Dress</PRODUCTNAME> <PRODUCTPRICE>$34.9000</PRODUCTPRICE> <PRODUCTID>2000331533</PRODUCTID> <PRODUCTURL>https://www.forever21.com/us/shop/Catalog/Product/f21/dress/2000331533?</PRODUCTURL> </ITEM> </PRODITEMS>"
         }
       }
     }
@@ -106,6 +109,30 @@ const comingSoonConfirmation = () => {
 
   let token = $("#token").val();
   sendEmail(data, "COMING_SOON_CONFIRMATION", token);
+};
+
+// COMING SOON NOTIFICATION
+const comingSoonNotification = () => {
+  let email = "michael.o@forever21.com";
+  let data = {
+    To: {
+      Address: SEND_EMAIL,
+      SubscriberKey: SEND_EMAIL,
+      ContactAttributes: {
+        SubscriberAttributes: {
+          EmailAddress: SEND_EMAIL,
+          XML_DATA:
+            "<PRODITEMS> <PRODITEMS> <ITEM> <PRODUCTIMAGE >http://www.forever21.com/images/intl_g/00273549-03.jpg</PRODUCTIMAGE > <PRODUCTNAME>No Bra Club Graphic Tee</PRODUCTNAME> <PRODUCTPRICE>$8.9</PRODUCTPRICE> <PRODUCTID>2000273549</PRODUCTID> <PRODUCTURL >https://www.forever21.com/us/shop/Catalog/Product/F21/app-main/2000273549/032</PRODUCTURL > </ITEM> <ITEM> <PRODUCTIMAGE >http://www.forever21.com/images/intl_g/00273549-03.jpg</PRODUCTIMAGE > <PRODUCTNAME>No Bra Club Graphic Tee</PRODUCTNAME> <PRODUCTPRICE>$8.9</PRODUCTPRICE> <PRODUCTID>2000273549</PRODUCTID> <PRODUCTURL >https://www.forever21.com/us/shop/Catalog/Product/F21/app-main/2000273549/032</PRODUCTURL > </ITEM> </PRODITEMS> </PRODITEMS>"
+
+          // SINGLE ITEM
+          // "<PRODITEMS> <ITEM> <PRODUCTIMAGE>http://www.forever21.com/images/intl_g/00273549-03.jpg</PRODUCTIMAGE> <PRODUCTNAME>No Bra Club Graphic Tee</PRODUCTNAME> <PRODUCTPRICE>$8.99</PRODUCTPRICE> <PRODUCTID>2000273549</PRODUCTID> <PRODUCTURL>https://www.forever21.com/us/shop/Catalog/Product/F21/app-main/2000273549/032</PRODUCTURL> </ITEM> </PRODITEMS>"
+        }
+      }
+    }
+  };
+
+  let token = $("#token").val();
+  sendEmail(data, "COMING_SOON_NOTIFICATION", token);
 };
 
 // ORDER CONFIRMATION
@@ -148,6 +175,123 @@ const sendGeneral = () => {
   sendEmail(data, "GENERAL_TRANSACTION", token);
 };
 
+// E GIFT SENDER
+const eGiftSender = () => {
+  let email = "michael.o@forever21.com";
+  let data = {
+    To: {
+      Address: SEND_EMAIL,
+      SubscriberKey: SEND_EMAIL,
+      ContactAttributes: {
+        SubscriberAttributes: {
+          EmailAddress: SEND_EMAIL,
+          XML_DATA:
+            "<EGIFT><SENDER><FROMNAME>Valerie Tengco</FROMNAME><TOEMAIL>Ryane.k.nubla@gmail.com</TOEMAIL><CARDIMAGE>https://www.forever21.com/images/f21/us/egift/email_large/00000001-65.jpg</CARDIMAGE></SENDER></EGIFT>"
+        }
+      }
+    }
+  };
+
+  let token = $("#token").val();
+  sendEmail(data, "EGIFT_SENDER", token);
+};
+
+// E GIFT RECEIVER
+const eGiftReceiver = () => {
+  let email = "michael.o@forever21.com";
+  let data = {
+    To: {
+      Address: SEND_EMAIL,
+      SubscriberKey: SEND_EMAIL,
+      ContactAttributes: {
+        SubscriberAttributes: {
+          EmailAddress: SEND_EMAIL,
+          XML_DATA:
+            "<EGIFT> <RECEIVER> <EGIFTNUMBER>100446791151268463 </EGIFTNUMBER> <PINNUMBER>91987029</PINNUMBER> <TONAME>Anndrea Williams</TONAME> <FROMNAME>Sophia Burgess</FROMNAME> <FROMEMAIL>SNBSWEETHEART@YAHOO.COM</FROMEMAIL> <AMOUNT>50</AMOUNT> <MESSAGE>Hope you had a great birthday weekend and i pray that God continue to bless your sweet days with many more. I love you cuz, Forever!</MESSAGE> <CARDIMAGE>https://www.forever21.com/images/f21/us/egift/email_large/00000001-59.jpg</CARDIMAGE> </RECEIVER> </EGIFT>"
+        }
+      }
+    }
+  };
+
+  let token = $("#token").val();
+  sendEmail(data, "EGIFT_RECEIVER", token);
+};
+
+// OUT OF STOCK FRONTEND
+const outOfStockFront = () => {
+  let email = "michael.o@forever21.com";
+  let data = {
+    To: {
+      Address: SEND_EMAIL,
+      SubscriberKey: SEND_EMAIL,
+      ContactAttributes: {
+        SubscriberAttributes: {
+          EmailAddress: SEND_EMAIL,
+          XML_DATA:
+            // MULTIPLE ITEMS
+            // "<OOS> <ITEMS> <ITEM> <BRAND>F21</BRAND> <PRODUCTNAME>Flounce Tube Crop Top</PRODUCTNAME> <PRICE>22</PRICE> <COLOR>TOMATO</COLOR> <SIZE>Large</SIZE><PRODUCTID>2000297779</PRODUCTID><PRODUCTIMAGE>http://www.forever21.com/images/intl_g/00297779-02.jpg</PRODUCTIMAGE> </ITEM> <ITEM> <BRAND>F21</BRAND> <PRODUCTNAME>Lace-Trim Bodysuit</PRODUCTNAME> <PRICE>12.9</PRICE> <COLOR>YELLOW</COLOR><SIZE>Medium</SIZE> <PRODUCTID>2000281146</PRODUCTID><PRODUCTIMAGE>http://www.forever21.com/images/intl_g/00281146-05.jpg</PRODUCTIMAGE> </ITEM> <ITEM> <BRAND>F21</BRAND> <PRODUCTNAME>Lace-Trim Bodysuit</PRODUCTNAME> <PRICE>12.9</PRICE> <COLOR>YELLOW</COLOR><SIZE>Large</SIZE> <PRODUCTID>2000281146</PRODUCTID><PRODUCTIMAGE>http://www.forever21.com/images/intl_g/00281146-05.jpg</PRODUCTIMAGE> </ITEM> </ITEMS> </OOS>"
+
+            // SINGLE ITEM
+            "<OOS> <ITEMS><ITEM> <BRAND>F21</BRAND> <PRODUCTNAME>Lace-Trim Bodysuit</PRODUCTNAME> <PRICE>12.9</PRICE> <COLOR>YELLOW</COLOR> <SIZE>Medium</SIZE> <PRODUCTID>2000281146</PRODUCTID> <PRODUCTIMAGE>http://www.forever21.com/images/intl_g/00281146-05.jpg</PRODUCTIMAGE> </ITEM></ITEMS> </OOS>"
+        }
+      }
+    }
+  };
+
+  let token = $("#token").val();
+  sendEmail(data, "OUT_OF_STOCK_FRONTEND", token);
+};
+
+// OUT OF STOCK BACKEND
+const outOfStockBack = () => {
+  let email = "michael.o@forever21.com";
+  let data = {
+    To: {
+      Address: SEND_EMAIL,
+      SubscriberKey: SEND_EMAIL,
+      ContactAttributes: {
+        SubscriberAttributes: {
+          EmailAddress: SEND_EMAIL,
+          XML_DATA:
+            // SINGLE ITEM
+            // "<OOS><ORDER><CUSTOMERNAME>fatima diaz</CUSTOMERNAME><ORDERNUMBER>84761904</ORDERNUMBER><ITEMS><ITEM><NAME>Men Xray Mesh-Knit Sneakers</NAME><PRODUCTID>2000339899</PRODUCTID><QUANTITY>1</QUANTITY><EXTENDEDPRICE>32</EXTENDEDPRICE><PRODUCTIMAGE>http://www.forever21.com/images/intl_g/00339899-01.jpg</PRODUCTIMAGE></ITEM></ITEMS></ORDER></OOS>"
+
+            // MULTIPLE ITEMS
+            "<OOS ><ORDER ><CUSTOMERNAME>fatima diaz</CUSTOMERNAME><ORDERNUMBER>84761904</ORDERNUMBER ><ITEMS ><ITEM ><NAME>Men Xray Mesh-Knit Sneakers</NAME ><PRODUCTID>2000339899</PRODUCTID><QUANTITY>1</QUANTITY ><EXTENDEDPRICE>32</EXTENDEDPRICE ><PRODUCTIMAGE >http://www.forever21.com/images/intl_g/00339899-01.jpg</PRODUCTIMAGE ></ITEM > <ITEM ><NAME>Men Xray Mesh-Knit Sneakers</NAME ><PRODUCTID>2000339899</PRODUCTID><QUANTITY>1</QUANTITY ><EXTENDEDPRICE>32</EXTENDEDPRICE ><PRODUCTIMAGE >http://www.forever21.com/images/intl_g/00339899-01.jpg</PRODUCTIMAGE ></ITEM > <ITEM ><NAME>Men Xray Mesh-Knit Sneakers</NAME ><PRODUCTID>2000339899</PRODUCTID><QUANTITY>1</QUANTITY ><EXTENDEDPRICE>32</EXTENDEDPRICE ><PRODUCTIMAGE >http://www.forever21.com/images/intl_g/00339899-01.jpg</PRODUCTIMAGE ></ITEM > </ITEMS ></ORDER ></OOS >"
+        }
+      }
+    }
+  };
+
+  let token = $("#token").val();
+  sendEmail(data, "OUT_OF_STOCK_BACKEND", token);
+};
+
+// BACK IN STOCK
+const backInStock = () => {
+  let email = "michael.o@forever21.com";
+  let data = {
+    To: {
+      Address: SEND_EMAIL,
+      SubscriberKey: SEND_EMAIL,
+      ContactAttributes: {
+        SubscriberAttributes: {
+          EmailAddress: SEND_EMAIL,
+          XML_DATA:
+            // SINGLE ITEM
+            // "<BIS><ITEMS><ITEM><BRAND>F21</BRAND><PRODUCTNAME>Floral Lace Bralette</PRODUCTNAME><PRICE>10.9</PRICE><COLOR>BLACK</COLOR><SIZE>Small</SIZE><PRODUCTID>2000300408</PRODUCTID><PRODUCTIMAGE>http://www.forever21.com/images/intl_g/00300408-06.jpg</PRODUCTIMAGE></ITEM></ITEMS></BIS>"
+
+            // MULTIPLE ITEMS
+            "<BIS><ITEMS><ITEM><BRAND>F21</BRAND><PRODUCTNAME>Floral Lace Bralette</PRODUCTNAME><PRICE>10.9</PRICE><COLOR>BLACK</COLOR><SIZE>Small</SIZE><PRODUCTID>2000300408</PRODUCTID><PRODUCTIMAGE>http://www.forever21.com/images/intl_g/00300408-06.jpg</PRODUCTIMAGE></ITEM><ITEM><BRAND>F21</BRAND><PRODUCTNAME>Floral Lace Bralette</PRODUCTNAME><PRICE>10.9</PRICE><COLOR>BLACK</COLOR><SIZE>Small</SIZE><PRODUCTID>2000300408</PRODUCTID><PRODUCTIMAGE>http://www.forever21.com/images/intl_g/00300408-06.jpg</PRODUCTIMAGE></ITEM><ITEM><BRAND>F21</BRAND><PRODUCTNAME>Floral Lace Bralette</PRODUCTNAME><PRICE>10.9</PRICE><COLOR>BLACK</COLOR><SIZE>Small</SIZE><PRODUCTID>2000300408</PRODUCTID><PRODUCTIMAGE>http://www.forever21.com/images/intl_g/00300408-06.jpg</PRODUCTIMAGE></ITEM></ITEMS></BIS>"
+        }
+      }
+    }
+  };
+
+  let token = $("#token").val();
+  sendEmail(data, "BACK_IN_STOCK", token);
+};
+
 //init function wiring up buttons with jQuery
 const init = () => {
   $("#getToken").on("click", getToken);
@@ -156,6 +300,12 @@ const init = () => {
   $("#order").on("click", sendOrder);
   $("#general").on("click", sendGeneral);
   $("#csConfirmation").on("click", comingSoonConfirmation);
+  $("#csNotification").on("click", comingSoonNotification);
+  $("#giftSender").on("click", eGiftSender);
+  $("#giftReceiver").on("click", eGiftReceiver);
+  $("#oosFront").on("click", outOfStockFront);
+  $("#oosBack").on("click", outOfStockBack);
+  $("#backInStock").on("click", backInStock);
 };
 
 $(document).ready(() => {
