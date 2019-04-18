@@ -44,6 +44,23 @@ const sendEmail = (data, key, token) => {
   });
 };
 
+// similar to above general email functionality, altered for Journey testing
+const startJourney = (data, token) => {
+  $.ajax({
+    type: "POST",
+    url: `https://mc5wp718bxk52f6jvhyftb9-p5ny.rest.marketingcloudapis.com/interaction/v1/events`,
+    contentType: "application/x-www-form-urlencoded",
+    headers: {
+      Authorization: "Bearer " + token
+    },
+    data: data,
+    success: onSuccess,
+    error: function(error) {
+      console.log(error.responseJSON);
+    }
+  });
+};
+
 //functions for each email, creates data object, and passes in details to sendEmail function
 
 // PASSWORD RESET
@@ -292,6 +309,28 @@ const backInStock = () => {
   sendEmail(data, "BACK_IN_STOCK", token);
 };
 
+// SHIP TO STORE JOURNEY
+const shipToStoreJourney = () => {
+  let email = "michael.o@forever21.com";
+  let data = {
+    ContactKey: SEND_EMAIL,
+    EventDefinitionKey: "APIEvent-80f293d9-8d07-e4dd-931d-910f0fd4a26e",
+    Data: {
+      FirstName: "Moneer",
+      LastName: "A",
+      email_address: "forevermoneer@gmail.com",
+      order_group_id: 4,
+      region: "US",
+      source: "test",
+      XML_DATA:
+        "<ORDER><BILLINGADDRESS><CUSTOMERNAME>Gibong Ryu</CUSTOMERNAME><ADDRESS1>3880 N Mission Road</ADDRESS1><ADDRESS2>Room 2112</ADDRESS2><CITY>Los Angeles</CITY><STATE>CA</STATE><ZIPCODE>90031</ZIPCODE></BILLINGADDRESS><SHIPPINGINFORMATION><SHIPPINGMETHOD>Standard</SHIPPINGMETHOD><CUSTOMERNAME>Gibong Ryu</CUSTOMERNAME><ADDRESS1>3880 N Mission Road</ADDRESS1><ADDRESS2>Room 2112</ADDRESS2><CITY>Los Angeles</CITY><STATE>CA</STATE><ZIPCODE>90031</ZIPCODE></SHIPPINGINFORMATION><ORDERNUMBER>12345678</ORDERNUMBER><ORDERDATE>06/17/2016 15:23:11</ORDERDATE><SUBTOTAL>24.80</SUBTOTAL><SHIPPINGTOTAL>24.80</SHIPPINGTOTAL><TAX>24.80</TAX><TOTAL>24.80</TOTAL><EMAIL>gb.ryu@forever21.com</EMAIL><PAYMENT><GIFTCARDTOTALAMOUNT>0.00</GIFTCARDTOTALAMOUNT><CREDITCARDTOTALAMOUNT>30.00</CREDITCARDTOTALAMOUNT><PAYPALTOTALAMOUNT>0.00</PAYPALTOTALAMOUNT></PAYMENT><ITEMS><ITEM><NAME>SpongeBob x Mina Kwon Varsity Tee</NAME><QUANTITY>1</QUANTITY><PRODUCTID>2002246551</PRODUCTID><EXTENDEDPRICE>18.90</EXTENDEDPRICE><PRODIMAGE>https://www.forever21.com/images/f21/sbo/product/02246551-01.jpg</PRODIMAGE><SIZECOLOR>BLACK</SIZECOLOR></ITEM></ITEMS><FNAME>Gibong Ryu</FNAME><STORENAME>STORE001</STORENAME><STOREADDR1>3888 N Mission Road</STOREADDR1><STORECITY>Los Angeles</STORECITY><STOREZIPCODE>90031</STOREZIPCODE><BILLCUSTOMERNAME>Gibong Ryu</BILLCUSTOMERNAME><BILLADDR1>3888 N Mission Road</BILLADDR1><BILLADDR2>Room 7777</BILLADDR2><BILLCITY>Los Angeles</BILLCITY><BILLSTATE>CA</BILLSTATE><BILLZIPCODE>90031</BILLZIPCODE><STOREPHONE>1234567</STOREPHONE><LASTDATE>04/08/2019 16:56:19</LASTDATE></ORDER>"
+    }
+  };
+
+  let token = $("#token").val();
+  startJourney(data, token);
+};
+
 //init function wiring up buttons with jQuery
 const init = () => {
   $("#getToken").on("click", getToken);
@@ -306,6 +345,7 @@ const init = () => {
   $("#oosFront").on("click", outOfStockFront);
   $("#oosBack").on("click", outOfStockBack);
   $("#backInStock").on("click", backInStock);
+  $("#testJourney").on("click", shipToStoreJourney);
 };
 
 $(document).ready(() => {
